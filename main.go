@@ -18,13 +18,13 @@ func main() {
 	output := []byte("[")
 	for index, line := range splitted {
 		if index == len(splitted)-1 {
-			output = append(output, line...)
-			output = append(output, []byte("]")...)
+			os.Stdout.Write(line)
+			os.Stdout.Write([]byte("]"))
 		} else {
-			output = append(output, line...)
-			output = append(output, []byte(",")...)
+			os.Stdout.Write(line)
+			os.Stdout.Write([]byte(","))
 		}
 	}
-	output = append(output, []byte("\n")...)
+	os.Stdout.Write([]byte("\n"))
 	os.Stdout.Write(output)
 }
