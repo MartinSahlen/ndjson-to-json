@@ -15,7 +15,7 @@ func main() {
 	if len(splitted) > 1 && string(splitted[len(splitted)-1]) == "" {
 		splitted = splitted[:len(splitted)-2]
 	}
-	output := []byte("[")
+	os.Stdout.Write([]byte("["))
 	for index, line := range splitted {
 		if index == len(splitted)-1 {
 			os.Stdout.Write(line)
@@ -26,5 +26,4 @@ func main() {
 		}
 	}
 	os.Stdout.Write([]byte("\n"))
-	os.Stdout.Write(output)
 }
