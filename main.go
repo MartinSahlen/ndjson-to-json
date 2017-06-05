@@ -11,19 +11,12 @@ func main() {
 	os.Stdout.Write([]byte("["))
 	for {
 		bytes, err := stdin.ReadBytes(byte('\n'))
-		if err == io.EOF {
+		os.Stdout.Write(bytes)
+		if err == io.EOF || string(bytes) == "" {
 			break
 		}
-		if string(bytes) == "" {
-			continue
-		}
-		os.Stdout.Write(bytes)
-		b, _ := stdin.Peek(1)
-		if len(b) > 0 {
-			os.Stdout.Write([]byte(","))
-		}
+		os.Stdout.Write([]byte(","))
 	}
-
 	os.Stdout.Write([]byte("]"))
 	os.Stdout.Write([]byte("\n"))
 }
